@@ -42,9 +42,7 @@ Note: This file may be written to, but it will only ever chande "mode"
 
 ## Materials
 
-See `parts` for details
-
-// TODO - BOM, Circuit diagram, STLs
+See `parts` folder for details
 
 # Usage
 
@@ -119,6 +117,12 @@ Mode values:
     - /leds/sync/on
       - Turn ON Antenna LEDs (Sync)
     - All other endpoints result in HTTP 404. All previous in HTTP 200
+    - /leds?delay=####
+      - Set the PWM Delay to this value in seconds. Accepts floats. E.G., `?delay=1` = 1s, `?delay=0.02` = 200ms
+      - Can pass in `delay=default`
+    - /leds?steps=####
+      - Set the PWM Steps to this whole number value. E.G., `?steps=32`, `?delay=0.03&steps=32
+      - Can pass in `steps=default`
 
 ## BLE
 
@@ -127,14 +131,30 @@ Mode values:
   - Battery Voltage: **0x2BF0**
   - Uptime Sensor (Seconds): **0x183F**
   - Switch Modes: **0x04C3**
-    - 1 *uint*: Switch to WiFi and restart board
+    - 1 *uint8*: Switch to WiFi and restart board
     - All other inputs ignored
   - LED Control: **0x77DA**
-    - 0 *uint* - Turn OFF Left Antenna LED
-    - 1 *uint* - Turn ON Left Antenna LED
-    - 2 *uint* - Turn OFF Right Antenna LED
-    - 3 *uint* - Turn ON Right Antenna LED
-    - 4 *uint* - Turn OFF Antenna LEDs (Sync)
-    - 5 *uint* - Turn ON Antenna LEDs (Sync)
+    - 0 *uint8* - Turn OFF Left Antenna LED
+    - 1 *uint8* - Turn ON Left Antenna LED
+    - 2 *uint8* - Turn OFF Right Antenna LED
+    - 3 *uint8* - Turn ON Right Antenna LED
+    - 4 *uint8* - Turn OFF Antenna LEDs (Sync)
+    - 5 *uint8* - Turn ON Antenna LEDs (Sync)
     - All other inputs ignored
+  - Set PWM Delay: **0x77DB**
+    - Milliseconds *uint16 big endian* - Set PWM Delay, accepts milliseconds, not seconds.
+    - Value of 0 will set it to the default of 0.03
+  - Set PWM Steps: **0x77DC**
+    - Steps *uint8* - Set the PWM Steps, accepts whole numbers from 0 to 128
+    - Value of 0 will set it to default of 32.
+    
+## Notes
+
+You can remotely configure the PWM parameters for the bulb LEDs with wifi or ble. Delay will update as soon as the old delay time has elapsed so near-instant. Step will update only after a step up or step down cycle has completed.
+
+For example, you can adjust the delay (and steps value, but delay is preferred) remotely based on other values. One use case may be to sync entering/exiting ranges of a heart rate monitor's BPM to push different delay values, or perhaps rate ranges of any other activity.
+
+The green LEDs are not controllable as they work as battery indicators. Rather than measure current or capacity which would be more accurate, I did not have time to plot the graph to tell capacity at specific voltages as it will be battery dependant, so it is at arbitrary battery voltage amounts. A 3.7v lipo at full charge is at 4.2v ish, and when there is approx 10% and 20% ish remaining it will turn off the top led's. 
+
+ALL values are reset to default when the board is restarted or switching modes. Only the value of the mode is retained after restarting, and is written to the config file.
     

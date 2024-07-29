@@ -27,6 +27,8 @@ class PinManager():
         self.left_led_pwm = None
         self.right_led_pwm = None
         
+        self.delay = self.set_delay(self._config.get("pwm", {}).get('delay', 0.01))
+        self.steps = self.set_steps(self._config.get("pwm", {}).get('step', 8))
         
         self.leds = self._config.get('leds', {})
         # Direct var references fix most of the mem leak un _run methods
@@ -137,37 +139,33 @@ class PinManager():
         pwm_data = self._config.get('pwm', {})
         if not pwm_data:
             return
-        
-        delay = pwm_data.get('delay', 0.01)
-        if delay < 0.01:
-            delay = 0.01
 
         on_time = pwm_data.get('on_time', 0.2)
         off_time = pwm_data.get('off_time', 0.1)
 
-        step = pwm_data.get('step', 8)
+        step = self.steps
         if step < 8:
             step = 8
 
         while run():
-            
+            step = self.steps
             for i in range(0, 1024, step):
                 # Fade in
                 for p in pwm_pins:
                     p.duty(i)
                 
-                time.sleep(delay)
+                time.sleep(self.delay)
                 if not run():
                     break
 
             time.sleep(on_time)
-
+            step = self.steps
             for i in range(1023, -1, -step):
                 # Fade out                
                 for p in pwm_pins:
                     p.duty(i)
                 
-                time.sleep(delay)
+                time.sleep(self.delay)
                 if not run():
                     break
             if i:
@@ -178,6 +176,20 @@ class PinManager():
 
         for p in pwm_pins:
             p.duty(0)
+    
+    def set_delay(self, val: float):
+        self.delay = val
+        if self.delay < 0.012:
+            self.delay = 0.012
+        if self.delay > 10:
+            self.delay = 10  
+            
+    def set_steps(self, val: int):
+        self.steps = val
+        if self.steps < 8:
+            self.steps = 8
+        if self.steps > 128:
+            self.steps = 128
     
     def _run_right_led(self):
         # Calling the dict for the values caused a mem leak
@@ -194,7 +206,7 @@ class PinManager():
         self.stop_sync_lights()
         if self._run_left_led():
             self.stop_left_light()
-            time.sleep(self._config.get('pwm', {}).get('off_time', 0.1)*2)
+            time.sleep((self._config.get('pwm', {}).get('off_time', 0.1)*2) + self.delay) 
         self.left_led_enabled = True
         th.start_new_thread(self.start_fade_loop, ([self.pwm_pin_d["left_pwm"]], self._run_left_led))
         
@@ -202,7 +214,7 @@ class PinManager():
         self.stop_sync_lights()
         if self._run_right_led():
             self.stop_right_light()
-            time.sleep(self._config.get('pwm', {}).get('off_time', 0.1)*2)
+            time.sleep((self._config.get('pwm', {}).get('off_time', 0.1)*2) + self.delay)
         self.right_led_enabled = True
         th.start_new_thread(self.start_fade_loop, ([self.pwm_pin_d["right_pwm"]], self._run_right_led))
         
@@ -212,7 +224,7 @@ class PinManager():
             self.stop_sync_lights()
             self.stop_right_light()
             self.stop_left_light()
-            time.sleep(self._config.get('pwm', {}).get('off_time', 0.1)*3)
+            time.sleep((self._config.get('pwm', {}).get('off_time', 0.1)*2) + self.delay)
         self.left_led_enabled = True
         self.right_led_enabled = True
         self.sync_leds_enabled = True
@@ -238,6 +250,3 @@ class PinManager():
         self.left_led_enabled = False
         self._config["leds"]["left"] = self.left_led_enabled
         self.leds = self._config['leds']
-        
-        
-

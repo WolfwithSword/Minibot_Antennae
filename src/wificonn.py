@@ -18,21 +18,25 @@ import wifimgr
 
 _HTTP_OK = const('HTTP/1.1 200 OK\n')
 _URL_RE = const("(?:GET|POST) /(.*?)(?:\\?.*?)? HTTP")
+_QUERY_RE = const("(?:GET|POST) /(.*?) HTTP")
 _METHOD_RE = const("^(GET|POST|PATCH|DELETE) /")
 _PLAIN_TXT = const('Content-Type: text/plain\n')
 
 def get_url(request):
     if "HTTP" not in request:
-        return '', ''
-    
+        return '', '', ''
+    query_param = ''
     try:
         url = ure.search(_URL_RE, request).group(1).decode("utf-8").rstrip("/")
         method = ure.search(_METHOD_RE, request).group(1).decode("utf-8")
+        query_param = ure.search(_QUERY_RE, request).group(1).decode("utf-8")
     except Exception:
         url = ure.search(_URL_RE, request).group(1).rstrip("/")
         method = ure.search(_METHOD_RE, request).group(1)
+        query_param = ure.search(_QUERY_RE, request).group(1)
     url = "/" + url
-    return url.strip(), method.strip()
+    query_param = "/" + query_param
+    return url.strip(), method.strip(), query_param.strip()
 
 _data = {}
 
@@ -46,8 +50,7 @@ class WiFiConn():
         try:
             req = cs.read()
             if req:
-                url, method = get_url(req)
-                
+                url, method, query_param = get_url(req)
                 if method == 'GET':
                     if url in ['/', '/data']:
                         _data['battery_voltage'] = self.pins.get_battery_voltage()
@@ -65,7 +68,7 @@ class WiFiConn():
                         cs.close()
                         self.utils.restart()
                         return
-                    elif url.startswith('/leds/'):
+                    elif url.startswith('/leds'):
                         if url == '/leds/right/off':
                             pins.stop_right_light()
                         elif url == '/leds/right/on':
@@ -78,10 +81,54 @@ class WiFiConn():
                             pins.stop_sync_lights()
                         elif url == '/leds/sync/on':
                             pins.start_sync_lights()
+                        elif query_param.startswith('/leds?'):
+                            delay = None
+                            steps = None
+                            valid_req = False
+                            if 'delay=' in query_param:
+                                val = query_param.split("delay=")[1]
+                                if "&" in val:
+                                    val = val.split("&")[0]
+                                try:
+                                    if val == "default":
+                                        delay = 0.03
+                                    else:
+                                        delay = float(val)
+                                except:
+                                    delay = None
+                                if delay is not None:
+                                    valid_req = True
+                            if 'steps=' in query_param:
+                                val = query_param.split("steps=")[1]
+                                if "&" in val:
+                                    val = val.split("&")[0]
+                                try:
+                                    if val == "default":
+                                        steps = 32
+                                    else:
+                                        steps = int(val)
+                                except:
+                                    steps = None
+                                if steps is not None:
+                                    valid_req = True
+                            if not valid_req:
+                                rep = 'Malformed Request'
+                                cs.send('HTTP/1.1 400 MALFORMED REQUEST\n')
+                                cs.send(_PLAIN_TXT)
+                                cs.send('Connection: close\n\n')
+                                cs.sendall(rep)
+                                cs.close()
+                                return
+                            else:
+                                if delay is not None:
+                                    self.pins.set_delay(delay)
+                                if steps is not None:
+                                    self.pins.set_steps(steps)
+                            
                         cs.send(_HTTP_OK)
                         cs.send(_PLAIN_TXT)
                         rep = 'OK'
-                    elif url.startswith('/mode/set/'):
+                    elif url.startswith('/mode/'):
                         cs.send(_HTTP_OK)
                         cs.send(_PLAIN_TXT)
                         

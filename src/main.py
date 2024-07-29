@@ -57,6 +57,8 @@ def main_monitor():
         #print(gc.mem_free())
         if (gc.mem_free() < 32000):
             gc.collect()
+        if (gc.mem_free() < 7500):
+            _utils.restart()
             
 ####################
 

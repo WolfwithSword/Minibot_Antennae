@@ -35,8 +35,8 @@ class Utils():
     def switch_mode(self, m: int):
         if m not in [_USE_NONE, _USE_WIFI, _USE_BLE]:
             return
+        self.get_config()
         self.config['mode'] = m
         with open(_CONFIG_FILE, 'w', encoding='utf-8') as f:
             json.dump(self.config, f)
         self.restart()
-

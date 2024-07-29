@@ -27,6 +27,14 @@ class BLEConn():
         
         _BLE_CTRL_MODE = bluetooth.UUID(0x04C3)
         
+        
+        _BLE_CTRL_DELAY = bluetooth.UUID(0x77DB) # set LED delay in milliseconds
+        # (NOT SECONDS which is in config)
+        # will be divided
+        # Only pass in UINT16 BIG ENDIAN
+
+        _BLE_CTRL_STEPS = bluetooth.UUID(0x77DC) #UINT8
+        
         _BLE_CTRL_LED = bluetooth.UUID(0x77DA) # left on or off (on on on is restart)
         # 0 = Left Off
         # 1 = Left On
@@ -41,6 +49,8 @@ class BLEConn():
         
         led_characteristic = aioble.Characteristic(ble_service, _BLE_CTRL_LED, read=True, write=True, notify=True, capture=True)
         mode_characteristic = aioble.Characteristic(ble_service, _BLE_CTRL_MODE, read=True, write=True, notify=True, capture=True)
+        delay_characteristic = aioble.Characteristic(ble_service, _BLE_CTRL_DELAY, read=True, write=True, notify=True, capture=True)
+        steps_characteristic = aioble.Characteristic(ble_service, _BLE_CTRL_STEPS, read=True, write=True, notify=True, capture=True)
         
         battery_sensor_characteristic = aioble.Characteristic(ble_service, _BLE_SENSOR_BAT, read=True, notify=True)
         uptime_sensor_characteristic = aioble.Characteristic(ble_service, _BLE_SENSOR_UPT, read=True, notify=True)
@@ -57,7 +67,7 @@ class BLEConn():
                     number = int.from_bytes(data, 'big')
                     return number
             except Exception as e:
-                print("Error decoding temperature:", e)
+                print("Error decoding value:", e)
                 return None
             
         async def sensor_tasks():
@@ -135,17 +145,81 @@ class BLEConn():
                     # Ensure the loop continues to the next iteration
                     await asyncio.sleep_ms(100)
 
+            
+        async def wait_for_delayms_write():
+            # UINT16 Big Endian only
+            while True:
+                try:
+                    connection, data = await delay_characteristic.written()
+                    data = _decode_data(data)
+                    print('Connection: ', connection)
+                    print('Data: ', data)
+                    delay = -1
+                    if data is not None:
+                        if isinstance(data, int):
+                            if data == 0:
+                                delay = 0
+                            else:
+                                delay = float(data / 1000.0)
+                        elif isinstance(data, float):
+                            delay = float(data / 1000.0)
+                            if data > 0 and data < 1:
+                                delay = data
+                        elif isinstance(data, str):
+                            try:
+                                delay = float(data)
+                            except:
+                                delay = -1
+                        if delay >= 0:
+                            if delay == 0: # Default
+                                delay = 0.03
+                            self.pins.set_delay(delay)
+                        else:
+                            print('Unknown command')
+                except asyncio.CancelledError:
+                    # Catch the CancelledError
+                    print("Peripheral task cancelled")
+                except Exception as e:
+                    print("Error in peripheral_task:", e)
+                finally:
+                    # Ensure the loop continues to the next iteration
+                    await asyncio.sleep_ms(100)
+
+            
+        async def wait_for_steps_write():
+            # UINT8
+            while True:
+                try:
+                    connection, data = await steps_characteristic.written()
+                    data = _decode_data(data)
+                    print('Connection: ', connection)
+                    print('Data: ', data)
+                    steps = data
+                    if data is not None:
+                        if steps >= 0:
+                            self.pins.set_steps(data)
+                        else:
+                            print('Unknown command')
+                except asyncio.CancelledError:
+                    # Catch the CancelledError
+                    print("Peripheral task cancelled")
+                except Exception as e:
+                    print("Error in peripheral_task:", e)
+                finally:
+                    # Ensure the loop continues to the next iteration
+                    await asyncio.sleep_ms(100)
+
         async def run():
             print("Running BLE")
             t1 = asyncio.create_task(sensor_tasks())
             t2 = asyncio.create_task(peripheral_task())
             t3 = asyncio.create_task(wait_for_mode_write())
             t4 = asyncio.create_task(wait_for_led_write())
-            await asyncio.gather(t1, t2, t3, t4)
+            t5 = asyncio.create_task(wait_for_delayms_write())
+            t6 = asyncio.create_task(wait_for_steps_write())
+            await asyncio.gather(t1, t2, t3, t4, t5, t6)
         
         await run()
     
     async def run(self):
         await self.start_ble()
-
-
