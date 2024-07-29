@@ -1,0 +1,30 @@
+{
+    "wifi": {
+        "name": "minibot_AT",
+        "ap_password": "eBot4do8",
+        "max_connections": 2,
+        "port": 8080
+    },
+    "ble": {
+        "name": "minibot_AT",
+        "uuid": "6094935a-ba8d-4fbb-9150-904e3244610b",
+        "poll_time": 5
+    },
+    "mode": 1,
+    "pwm": {
+        "frequency": 500,
+        "delay": 0.03,
+        "off_time": 0.05,
+        "on_time": 0.5,
+        "step": 32
+    },
+    "leds": {
+        "green1": true,
+        "green2": true,
+        "green3": true,
+        "left": true,
+        "right": true,
+        "sync_sides": true
+    },
+    "poll_time": 2
+}
