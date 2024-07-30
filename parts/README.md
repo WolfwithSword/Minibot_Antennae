@@ -1,3 +1,5 @@
+TODO: Images in new folder for assembly
+
 # STLs
 
 - Stalks: tpu_left_stalk.stl, tpu_right_stalk.stl
@@ -19,7 +21,7 @@ This is not my best BOM, made in rush
   - Chosen for expandability. If using another board, there are no guarantees as to the code working fully in case lack of processing or memory.
   - This project can use both BLE and WiFi servers, but the config does allow to disable both if you want just default settings.
 - LiPo Battery
-  - [3.7v 1100mAh, 34.5x51x6.3mm (WxLxH)](https://amzn.to/3zZs4OB).
+  - [3.7v 1100mAh, 34.5x51x6.3mm (WxLxH)](https://amzn.to/3zZs4OB)
   - If using the one from the link, you *MAY* need to swap the pwr and gnd leads. Make sure before hooking up to board.
   - For alternatives, size the slot fits is mentioned above. If loose, please pad to make sure it does not come out during use. Capacity can be any, 1100mAh will last between 12-18 hours roughly.
 - Screws
@@ -60,8 +62,6 @@ Attach each LED to a 270ohm resistor.
 The pogo connectors have support for 4 wires, but only 3 are used. Please make sure they line up properly.
 
 For the PHR connectors, use the male end in the Right shell going to the pogo connector, and the female inside the Left shell going into the pogo connector (if you need to swap battery leads, can do it here or on battery itself), and plug battery into the female end, and male side into the ESP board (tight fit, may need to clip corner).
-
-TODO: Link img
 
 Yes I know the diagram isn't super good, made it in a hurry.
 
