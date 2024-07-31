@@ -201,7 +201,7 @@ class PinManager():
         self.stop_sync_lights()
         if self._run_left_led():
             self.stop_left_light()
-            time.sleep((self.on_time_mult*self.delay*2))
+            time.sleep((self.on_time_mult*self.delay*2)+0.5+self.off_time_mult*self.delay)
         self.left_led_enabled = True
         th.start_new_thread(self.start_fade_loop, ([self.pwm_pin_d["left_pwm"]], self._run_left_led))
         
@@ -209,7 +209,7 @@ class PinManager():
         self.stop_sync_lights()
         if self._run_right_led():
             self.stop_right_light()
-            time.sleep((self.on_time_mult*self.delay*2))
+            time.sleep((self.on_time_mult*self.delay*2)+0.5+self.off_time_mult*self.delay)
         self.right_led_enabled = True
         th.start_new_thread(self.start_fade_loop, ([self.pwm_pin_d["right_pwm"]], self._run_right_led))
         
@@ -219,7 +219,7 @@ class PinManager():
             self.stop_sync_lights()
             self.stop_right_light()
             self.stop_left_light()
-            time.sleep((self.on_time_mult*self.delay*2))
+            time.sleep((self.on_time_mult*self.delay*2)+0.5+self.off_time_mult*self.delay)
         self.left_led_enabled = True
         self.right_led_enabled = True
         self.sync_leds_enabled = True
@@ -231,6 +231,8 @@ class PinManager():
         self.sync_leds_enabled = False
         self._config["leds"]["sync_sides"] = self.sync_leds_enabled
         self.leds = self._config['leds']
+        self.stop_right_light()
+        self.stop_left_light()
 
     def stop_right_light(self):
         self.sync_leds_enabled = False
@@ -245,4 +247,5 @@ class PinManager():
         self.left_led_enabled = False
         self._config["leds"]["left"] = self.left_led_enabled
         self.leds = self._config['leds']
+
 
