@@ -158,8 +158,8 @@ For example, you can adjust the delay (and steps value, but delay is preferred) 
 
 Examples for WiFi control of PWM adjustments:
 
-      - For a really fast cycle, I recommend `?delay=0.012&steps=64` or `?delay=0.012&steps=128` (fastest)
-      - Default would be `?delay=0.03&steps=32` or `?delay=default&steps=default`
+  - For a really fast cycle, I recommend `?delay=0.012&steps=64` or `?delay=0.012&steps=128` (fastest)
+  - Default would be `?delay=0.03&steps=32` or `?delay=default&steps=default`
 
 The green LEDs are not controllable as they work as battery indicators. Rather than measure current or capacity which would be more accurate, I did not have time to plot the graph to tell capacity at specific voltages as it will be battery dependant, so it is at arbitrary battery voltage amounts. A 3.7v lipo at full charge is at 4.2v ish, and when there is approx 10% and 20% ish remaining it will turn off the top led's. 
 
