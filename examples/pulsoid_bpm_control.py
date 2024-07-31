@@ -21,6 +21,7 @@ settings = [
 # &response_mode=legacy_json is optional. This is built to work with both. It also works with response_type=plaintext
 pulsoid_ws_url = "wss://dev.pulsoid.net/api/v1/data/real_time?access_token=YOUR_TOKEN_HERE&response_mode=legacy_json"
 
+# Modify as needed
 at_host = "minibot_AT.local"
 at_port = 8080
 
