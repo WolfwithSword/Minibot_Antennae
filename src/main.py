@@ -58,6 +58,7 @@ def main_monitor():
         if (gc.mem_free() < 32000):
             gc.collect()
         if (gc.mem_free() < 7500):
+            print("RESTARTING. LOW MEMORY")
             _utils.restart()
             
 ####################
@@ -71,3 +72,4 @@ if MODE == _USE_WIFI:
 elif MODE == _USE_BLE:
     ble_conn = BLEConn(pins=pins, _utils=_utils)
     asyncio.run(ble_conn.run())
+

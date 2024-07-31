@@ -197,7 +197,7 @@ class BLEConn():
                     steps = data
                     if data is not None:
                         if steps >= 0:
-                            self.pins.set_steps(data)
+                            self.pins.set_steps(steps)
                         else:
                             print('Unknown command')
                 except asyncio.CancelledError:
@@ -223,3 +223,4 @@ class BLEConn():
     
     async def run(self):
         await self.start_ble()
+

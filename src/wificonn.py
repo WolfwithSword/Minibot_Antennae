@@ -70,17 +70,17 @@ class WiFiConn():
                         return
                     elif url.startswith('/leds'):
                         if url == '/leds/right/off':
-                            pins.stop_right_light()
+                            self.pins.stop_right_light()
                         elif url == '/leds/right/on':
-                            pins.start_right_light()
+                            self.pins.start_right_light()
                         elif url == '/leds/left/off':
-                            pins.stop_left_light()
+                            self.pins.stop_left_light()
                         elif url == '/leds/left/on':
-                            pins.start_left_light()
+                            self.pins.start_left_light()
                         elif url == '/leds/sync/off':
-                            pins.stop_sync_lights()
+                            self.pins.stop_sync_lights()
                         elif url == '/leds/sync/on':
-                            pins.start_sync_lights()
+                            self.pins.start_sync_lights()
                         elif query_param.startswith('/leds?'):
                             delay = None
                             steps = None
@@ -229,3 +229,4 @@ class WiFiConn():
                     print("Restarting Socket...")
                     _sock = self.start_socket(ignore_error=True)
             pass
+
