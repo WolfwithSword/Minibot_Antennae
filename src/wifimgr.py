@@ -27,9 +27,11 @@ ap_authmode = 3  # WPA2
 
 NETWORK_PROFILES = 'wifi.dat'
 
+
+network.hostname(ap_ssid)
+
 wlan_ap = network.WLAN(network.AP_IF)
 wlan_sta = network.WLAN(network.STA_IF)
-
 server_socket = None
 
 
@@ -111,8 +113,7 @@ def do_connect(ssid, password):
         time.sleep(0.1)
         print('.', end='')
     if connected:
-        print('\nConnected. Network config: ', wlan_sta.ifconfig())
-        
+        print('\nConnected. Network config: ', wlan_sta.ifconfig())        
     else:
         print('\nFailed. Not Connected to: ' + ssid)
     return connected
@@ -338,3 +339,4 @@ def start(port=80):
 
         finally:
             client.close()
+

@@ -15,6 +15,7 @@ except:
     import socket
     
 import wifimgr
+from network import hostname
 
 _HTTP_OK = const('HTTP/1.1 200 OK\n')
 _URL_RE = const("(?:GET|POST) /(.*?)(?:\\?.*?)? HTTP")
@@ -199,7 +200,7 @@ class WiFiConn():
             while True:
                 pass
         print("IP is: "+wlan.ifconfig()[0])
-        #wlan_sta.config(dhcp_hostname=config['wifi']['device_hostname'])
+        print("Hostname is: " + hostname())
         _sock = self.start_socket()
         return _sock
     

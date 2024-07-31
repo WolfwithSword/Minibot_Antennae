@@ -51,7 +51,7 @@ See `parts` folder for details
 ```json
 {
     "wifi": {
-        "name": "minibot_AT", // Access point SSID
+        "name": "minibot_AT", // Access point SSID and hostname (both in AP mode and connected to WiFi)
         "ap_password": "eBot4do8", // Access point Password. Please Change
         "max_connections": 2, // Max number of listeners allowed for the socket control server
         "port": 8080 // Port for accessing the socket control server
@@ -92,6 +92,10 @@ Mode values:
 
 
 ## WiFi
+
+If you can't find the IP address, it will have the hostname configured as "name" in the "wifi" section of the configuration. By default, this will mean it has a hostname of `minibot_AT`
+
+If setting up multiple, please change the hostname and maybe the password for security.
 
 ### Endpoints
   - GET
