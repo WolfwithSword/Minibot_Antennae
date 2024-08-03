@@ -111,7 +111,7 @@ class PinManager():
         if bat_voltage == 0:
             self.init_off()
             return
-        
+
         if self.green_1 and self.green_1.value() != 1:
             self.set_pins({"g1": 1})
             
