@@ -55,6 +55,7 @@ class WiFiConn():
                 if method == 'GET':
                     if url in ['/', '/data']:
                         _data['battery_voltage'] = self.pins.get_battery_voltage()
+                        _data['battery_adc_raw'] = self.pins.battery_pin.read()
                         _data['uptime_s'] = self.utils.get_elapsed_time()
                         rep = _data
                         cs.send(_HTTP_OK)
@@ -230,4 +231,5 @@ class WiFiConn():
                     print("Restarting Socket...")
                     _sock = self.start_socket(ignore_error=True)
             pass
+
 
