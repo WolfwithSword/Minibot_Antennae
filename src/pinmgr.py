@@ -23,7 +23,7 @@ class PinManager():
         
         self.left_led = Pin(left, Pin.OUT)
         self.right_led = Pin(right, Pin.OUT)
-        
+
         self.left_led_pwm = None
         self.right_led_pwm = None
         

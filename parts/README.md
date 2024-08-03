@@ -55,11 +55,13 @@ See the attached image for which pins need to go where. All ground wires can be 
 
 ![diagram](https://github.com/WolfwithSword/Minibot_Antennae/blob/7136da70240d4f9ad35364681554e1c236fe439b/parts/antennae_pinout.png)
 
-For the LED in the left antenna (where the battery is), connect the ground to the same ground pin on the pogo connector as the battery.
+For the LED in the left antenna (where the battery is), do NOT connect the ground to the same gorund pin on the pogo connector as the battery. It will invert it (wtf). 
+
+Use all 4 pins of the pogo connectors.
 
 Attach each LED to a 270ohm resistor.
 
-The pogo connectors have support for 4 wires, but only 3 are used. Please make sure they line up properly.
+The pogo connectors have support for 4 wires. Please make sure they line up properly. And double check the battery power/gnd to the board too.
 
 For the PHR connectors, use the male end in the Right shell going to the pogo connector, and the female inside the Left shell going into the pogo connector (if you need to swap battery leads, can do it here or on battery itself), and plug battery into the female end, and male side into the ESP board (tight fit, may need to clip corner).
 
