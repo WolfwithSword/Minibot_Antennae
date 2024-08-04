@@ -14,7 +14,7 @@ settings = [
     "?delay=0.02&steps=default",
     "?delay=0.02&steps=64",
     "?delay=0.012&steps=64",
-    "?delay=0,012&steps=128"
+    "?delay=0.012&steps=128"
     ]
 
 # Either use Pulsoid bro plan for websocket API, or go to your free browser source URL, open inspect element network tab and look for the websocket URL for that browser source.

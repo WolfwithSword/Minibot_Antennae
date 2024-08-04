@@ -4,7 +4,7 @@
 
 <img src="https://github.com/WolfwithSword/Minibot_Antennae/blob/2cbd826bdc27e1a26c03a4adb0e98f0bf67f6855/images/view.jpg" width="500" height="500">
 
-<img src="https://github.com/WolfwithSword/Minibot_Antennae/blob/135a535a8984ada1f60bc0b0fd572eecee0951f4/images/turn_on_sequence.gif" width="50%" height="50%">
+<img src="https://github.com/WolfwithSword/Minibot_Antennae/blob/135a535a8984ada1f60bc0b0fd572eecee0951f4/images/turn_on_sequence.gif" width="35%" height="35%">
 
 
 [![Demo Video](https://img.youtube.com/vi/qy43_1V1VM8/0.jpg)](https://youtu.be/qy43_1V1VM8 "Demo Video")
