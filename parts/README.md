@@ -59,7 +59,7 @@ For the LED in the left antenna (where the battery is), do NOT connect the groun
 
 Use all 4 pins of the pogo connectors.
 
-Attach each LED to a 270ohm resistor.
+Attach each LED to a 270ohm resistor (realistically anything from 220-330ohm should be fine). 
 
 The pogo connectors have support for 4 wires. Please make sure they line up properly. And double check the battery power/gnd to the board too.
 

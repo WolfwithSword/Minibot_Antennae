@@ -132,7 +132,7 @@ If setting up multiple, please change the hostname and maybe the password for se
       - Can pass in `delay=default`
       - Min value = 0.012, Max value = 10, default 0.03 (without modification)
     - /leds?steps=####
-      - Set the PWM Steps to this whole number value. E.G., `?steps=32`, `?delay=0.03&steps=32
+      - Set the PWM Steps to this whole number value. E.G., `?steps=32`, `?delay=0.03&steps=32`
       - Can pass in `steps=default`
       - Min value = 8, Max value = 128, default 32 (without modification)
 
@@ -162,7 +162,7 @@ If setting up multiple, please change the hostname and maybe the password for se
     
 ## Notes
 
-You can remotely configure the PWM parameters for the bulb LEDs with wifi or ble. Delay will update as soon as the old delay time has elapsed so near-instant. Step will update only after a step up or step down cycle has completed.
+You can remotely configure the PWM parameters for the bulb LEDs with WiFi or BLE. Delay will update as soon as the old delay time has elapsed so near-instant. Step will update only after a step up or step down cycle has completed for an up-cycle or down-cycle.
 
 For example, you can adjust the delay (and steps value, but delay is preferred) remotely based on other values. One use case may be to sync entering/exiting ranges of a heart rate monitor's BPM to push different delay values, or perhaps rate ranges of any other activity.
 
@@ -173,5 +173,9 @@ Examples for WiFi control of PWM adjustments:
 
 The green LEDs are not controllable as they work as battery indicators. Rather than measure current or capacity which would be more accurate, I did not have time to plot the graph to tell capacity at specific voltages as it will be battery dependant, so it is at arbitrary battery voltage amounts. A 3.7v lipo at full charge is at 4.2v ish, and when there is approx 10% and 20% ish remaining it will turn off the top led's. 
 
+When there is only the last LED left one, it is possible the board will go into a deep sleep and stop all threads (no WiFi, BLE, or PWM Fades). In this mode it will keep that last LED lit for approximately 2 hours.
+
 ALL values are reset to default when the board is restarted or switching modes. Only the value of the mode is retained after restarting, and is written to the config file.
+
+If for whatever reason it is stuck and not connecting to WiFi or threads got stuck like from being in deepsleep and back up again after charging, just quickly disconnect the pogo connectors when it's not charging for a second. This also acts as the power switch - there is none, just unplug one side of the pogo wire.
     
