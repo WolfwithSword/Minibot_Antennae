@@ -51,9 +51,11 @@ This is not my best BOM, made in rush
 
 ## Wiring
 
-See the attached image for which pins need to go where. All ground wires can be spliced and connected to the same GND pin.
+See the attached image for which pins need to go where. All ground wires except from the battery can be spliced and connected to the same GND pin.
 
-![diagram](https://github.com/WolfwithSword/Minibot_Antennae/blob/7136da70240d4f9ad35364681554e1c236fe439b/parts/antennae_pinout.png)
+![diagram](https://github.com/WolfwithSword/Minibot_Antennae/blob/7136da70240d4f9ad35364681554e1c236fe439b/parts/antenna_sketch.png)
+
+![pinout](https://github.com/WolfwithSword/Minibot_Antennae/blob/7136da70240d4f9ad35364681554e1c236fe439b/parts/antennae_pinout.png)
 
 For the LED in the left antenna (where the battery is), do NOT connect the ground to the same gorund pin on the pogo connector as the battery. It will invert it (wtf). 
 

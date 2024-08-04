@@ -7,6 +7,12 @@ Two LEDs (one on each side) on the antennae bulbs will be PWM controlled in a fa
 
 By default, WiFi Mode is enabled.
 
+[![Demo Video](https://img.youtube.com/vi/qy43_1V1VM8/0.jpg)](https://youtu.be/qy43_1V1VM8 "Demo Video")
+
+
+[Preview]()
+
+
 # Setup
 
 ## MicroPython
