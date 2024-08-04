@@ -63,8 +63,9 @@ def main_monitor():
             
 ####################
 
-pins.start_sync_lights()
 th.start_new_thread(main_monitor, [])
+time.sleep(1)
+pins.start_sync_lights()
     
 if MODE == _USE_WIFI:
     wifi_conn = WiFiConn(pins=pins, _utils=_utils)

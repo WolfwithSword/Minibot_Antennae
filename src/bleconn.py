@@ -196,6 +196,8 @@ class BLEConn():
                     print('Data: ', data)
                     steps = data
                     if data is not None:
+                        if steps == 0:
+                            steps = 32
                         if steps >= 0:
                             self.pins.set_steps(steps)
                         else:
