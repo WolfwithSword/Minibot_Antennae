@@ -53,7 +53,7 @@ This is not my best BOM, made in rush
 
 See the attached image for which pins need to go where. All ground wires except from the battery can be spliced and connected to the same GND pin.
 
-![diagram](https://github.com/WolfwithSword/Minibot_Antennae/blob/7136da70240d4f9ad35364681554e1c236fe439b/parts/antenna_sketch.png)
+![diagram](https://github.com/WolfwithSword/Minibot_Antennae/blob/733598314d23b8bfa7988889760d9e0215d5bb3b/parts/antenna_sketch.png)
 
 ![pinout](https://github.com/WolfwithSword/Minibot_Antennae/blob/7136da70240d4f9ad35364681554e1c236fe439b/parts/antennae_pinout.png)
 
