@@ -11,7 +11,7 @@ By default, WiFi Mode is enabled.
 
 [![Demo Video](https://img.youtube.com/vi/qy43_1V1VM8/0.jpg)](https://youtu.be/qy43_1V1VM8 "Demo Video")
 
-<img src="https://github.com/WolfwithSword/Minibot_Antennae/blob/733598314d23b8bfa7988889760d9e0215d5bb3b/images/view.png" width="300" height="300">
+<img src="https://github.com/WolfwithSword/Minibot_Antennae/blob/2cbd826bdc27e1a26c03a4adb0e98f0bf67f6855/images/view.jpg" width="300" height="300">
 
 # Setup
 
