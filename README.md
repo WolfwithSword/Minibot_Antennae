@@ -48,7 +48,9 @@ Note: This file may be written to, but it will only ever chande "mode"
 
 ## Materials
 
-See `parts` folder for details
+See [parts](https://github.com/WolfwithSword/Minibot_Antennae/tree/main/parts)  folder for details
+
+Note: The choice for the "FireBeetle" ESP32 controller was mostly because of the battery plug being on the side and expandability... But the fact it's a "Beetle" is a big bonus I only realized after!
 
 # Usage
 
@@ -173,7 +175,7 @@ Examples for WiFi control of PWM adjustments:
   - For a really fast cycle, I recommend `?delay=0.012&steps=64` or `?delay=0.012&steps=128` (fastest)
   - Default would be `?delay=0.03&steps=32` or `?delay=default&steps=default`
 
-The green LEDs are not controllable as they work as battery indicators. Rather than measure current or capacity which would be more accurate, I did not have time to plot the graph to tell capacity at specific voltages as it will be battery dependant, so it is at arbitrary battery voltage amounts. A 3.7v lipo at full charge is at 4.2v ish, and when there is approx 10% and 20% ish remaining it will turn off the top led's. 
+The green LEDs are not controllable as they work as battery indicators. Rather than measure current or capacity which would be more accurate, I did not have time to plot the graph to tell capacity at specific voltages as it will be battery dependant, so it is at arbitrary battery voltage amounts. A 3.7v lipo at full charge is near 5v, and will stay around 4.2v for a very long time, and when there is approx 10% and 20% ish or less remaining it will turn off the top led's. It may shut down all processing and threads shortly after reaching single-LED mode if there is not enough power left (roughly when it gets to 3.2v or below, and will full stop at under 3v). 
 
 When there is only the last LED left one, it is possible the board will go into a deep sleep and stop all threads (no WiFi, BLE, or PWM Fades). In this mode it will keep that last LED lit for approximately 2 hours.
 

@@ -20,7 +20,7 @@ This is not my best BOM, made in rush
   - This project can use both BLE and WiFi servers, but the config does allow to disable both if you want just default settings.
 - LiPo Battery
   - [3.7v 1100mAh, 34.5x51x6.3mm (WxLxH)](https://amzn.to/3zZs4OB)
-  - If using the one from the link, you *MAY* need to swap the pwr and gnd leads. Make sure before hooking up to board.
+  - If using the one from the link, you *MAY* need to swap the pwr and gnd leads. Make sure before hooking up to board AND before hooking up to JST port/wires. Good idea to make an inverter wire so it isn't permanent.
   - For alternatives, size the slot fits is mentioned above. If loose, please pad to make sure it does not come out during use. Capacity can be any, 1100mAh will last between 12-18 hours roughly.
 - Screws
   - 4x M2 8-12mm (For ESP32, no heatset inserts, direct to plastic)
@@ -84,3 +84,5 @@ Super glue the pogo connectors into the slots on the shell you choose - use plug
 To connect the two antennae you will need to make a POGO wire with the reverse ends that will go around the back or top depending on choice. I recommend choosing the back so it provides additional stability with the headband.
 
 The headband is adjustable and relies on the larger screw at the top of the back panels.
+
+See [/images](https://github.com/WolfwithSword/Minibot_Antennae/tree/main/images) for more details.
