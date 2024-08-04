@@ -99,7 +99,9 @@ Mode values:
 
 ## WiFi
 
-If you can't find the IP address, it will have the hostname configured as "name" in the "wifi" section of the configuration. By default, this will mean it has a hostname of `minibot_AT`
+If you can't find the IP address, it will have the hostname configured as "name" in the "wifi" section of the configuration. By default, this will mean it has a hostname of `minibot_AT`, may work as `minibot_AT.local`.
+
+When in AP mode to setup a network connection, hostname should work but if not, the setup page usually will be available at `192.168.4.1` when connected to it.
 
 If setting up multiple, please change the hostname and maybe the password for security.
 
