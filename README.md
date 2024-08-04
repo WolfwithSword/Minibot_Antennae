@@ -180,4 +180,8 @@ When there is only the last LED left one, it is possible the board will go into 
 ALL values are reset to default when the board is restarted or switching modes. Only the value of the mode is retained after restarting, and is written to the config file.
 
 If for whatever reason it is stuck and not connecting to WiFi or threads got stuck like from being in deepsleep and back up again after charging, just quickly disconnect the pogo connectors when it's not charging for a second. This also acts as the power switch - there is none, just unplug one side of the pogo wire.
+
+When enabling an individual LED while Sync is on, it will disable Sync and the other LED will need to be turned on separately if you want both unsynced. Turning off Sync when sync is not enabled will do nothing. Turning on Sync will restart both lights.
+
+When using the 1100maH battery, it will last roughly 17 hours on a full charge (charging ~1h at 2A), but can last easily 11-13 hours on fullish charge (~20-30min at 2A). Battery capacity is not measured but rather voltage levels are used as ranges to signal the three green LEDs. Just because all are lit up does not mean it is fully charged by far.
     
