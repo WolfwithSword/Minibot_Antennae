@@ -1,5 +1,3 @@
-TODO: Images in new folder for assembly
-
 # STLs
 
 - Stalks: tpu_left_stalk.stl, tpu_right_stalk.stl
