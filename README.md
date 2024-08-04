@@ -7,12 +7,11 @@ Two LEDs (one on each side) on the antennae bulbs will be PWM controlled in a fa
 
 By default, WiFi Mode is enabled.
 
-Demo Video:
+### Demo Video:
+
 [![Demo Video](https://img.youtube.com/vi/qy43_1V1VM8/0.jpg)](https://youtu.be/qy43_1V1VM8 "Demo Video")
 
-
-![Preview](https://github.com/WolfwithSword/Minibot_Antennae/blob/733598314d23b8bfa7988889760d9e0215d5bb3b/images/view.png)
-
+<img src="https://github.com/WolfwithSword/Minibot_Antennae/blob/733598314d23b8bfa7988889760d9e0215d5bb3b/images/view.png" width="300" height="300">
 
 # Setup
 
