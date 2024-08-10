@@ -86,3 +86,17 @@ To connect the two antennae you will need to make a POGO wire with the reverse e
 The headband is adjustable and relies on the larger screw at the top of the back panels.
 
 See [/images](https://github.com/WolfwithSword/Minibot_Antennae/tree/main/images) for more details.
+
+
+## Tips
+
+- The screws holding in the ESP32 may not be perfectly aligned. Try to get at least 3 in, even if they are at an angle. The front two are priority.
+- The screw mounts for the shells/lids are too big to just screw into I think, hence the heatset inserts also makes them more robust for taking apart as well.
+- For the small clear pieces in the bulbs, they can be clear filament, white filament, or can be omitted entirely.
+- The use of a deburring tool can be helpful in making sure the hole for the USB-C port and POGO connectors fit well
+- Highly recommend gluing the pogo connectors in place when it's all done. Same for the green LEDs
+- Printing a thinner wall for the TPU antennae stalks might make them more sproingly and easier to force into the bulb ends.
+- Recommend thick walls/top/bottom layers for the shells, so there is more material to sand. If smoothing with acetone after, it also helps.
+- Definitely use some JST connectors internally as easy hookups for battery stuffs.
+- The headband is adjustable in sice and rotation, double using the top screw as a hinge and pin.
+- Any more questions or advice or other, feel free to message me on Discord `@wolfwithsword` inbox is always open.
