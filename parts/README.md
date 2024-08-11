@@ -94,9 +94,10 @@ See [/images](https://github.com/WolfwithSword/Minibot_Antennae/tree/main/images
 - The screw mounts for the shells/lids are too big to just screw into I think, hence the heatset inserts also makes them more robust for taking apart as well.
 - For the small clear pieces in the bulbs, they can be clear filament, white filament, or can be omitted entirely.
 - The use of a deburring tool can be helpful in making sure the hole for the USB-C port and POGO connectors fit well
+- Keep in mind, ABS and ASA do shrink a bit when printed. For the Teal ABS I linked in the materials, I calculated a shrinkage of 98.9%. 
 - Highly recommend gluing the pogo connectors in place when it's all done. Same for the green LEDs
-- Printing a thinner wall for the TPU antennae stalks might make them more sproingly and easier to force into the bulb ends.
-- Recommend thick walls/top/bottom layers for the shells, so there is more material to sand. If smoothing with acetone after, it also helps.
+- Printing a thinner wall for the TPU antennae stalks might make them more sproingly and easier to force into the bulb ends. Also printing these vertically & upsidedown should give the best surface finish, use tree supports in this case.
+- Recommend quite thick walls/top/bottom layers for the shells (basically, solid walls), so there is more material to sand. If smoothing with acetone after, it also helps.
 - Definitely use some JST connectors internally as easy hookups for battery stuffs.
 - The headband is adjustable in sice and rotation, double using the top screw as a hinge and pin.
 - Any more questions or advice or other, feel free to message me on Discord `@wolfwithsword` inbox is always open.
