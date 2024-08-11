@@ -52,6 +52,8 @@ Note: This file may be written to, but it will only ever chande "mode"
 
 See [parts](https://github.com/WolfwithSword/Minibot_Antennae/tree/main/parts)  folder for details
 
+You can find the files also on [Printables](https://www.printables.com/model/971520-ellie-minibot-antennae)
+
 Note: The choice for the "FireBeetle" ESP32 controller was mostly because of the battery plug being on the side and expandability... But the fact it's a "Beetle" is a big bonus I only realized after!
 
 Most of the design from materials, code, and components was chosen to be more accessible and customizable/tinkerable.

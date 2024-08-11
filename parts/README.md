@@ -1,3 +1,5 @@
+You can find the files also on [Printables](https://www.printables.com/model/971520-ellie-minibot-antennae)
+
 # STLs
 
 - Stalks: tpu_left_stalk.stl, tpu_right_stalk.stl
