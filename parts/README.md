@@ -71,21 +71,24 @@ Yes I know the diagram isn't super good, made it in a hurry.
 
 ## Building
 
-Use short thin wires, preferably silicone for flexibility inside as it may be a tight fit. Trim the leads on the LEDs and resistors as needed. 
+- Use short thin wires, preferably silicone for flexibility inside as it may be a tight fit. Trim the leads on the LEDs and resistors as needed. 
 
-Ensure the ESP32 can be screwed in (preferably route most of the wiring *under* the board) and that the backing can be screwed onto the shell still. It goes in upside down (ESP Chip, Battery port etc, will go facing the round part of the shell).
+- Ensure the ESP32 can be screwed in (preferably route most of the wiring *under* the board) and that the backing can be screwed onto the shell still. It goes in upside down (ESP Chip, Battery port etc, will go facing the round part of the shell).
 
-Insert the LED for each antennae stalk with wires pre-attached through the top of the TPU stalks, then insert the stalks into the shells. They should be a smooth fit, but so superglue them at the base to make sure it is attached tightly.
+- Insert the LED for each antennae stalk with wires pre-attached through the top of the TPU stalks, then insert the stalks into the shells. They should be a smooth fit, but so superglue them at the base to make sure it is attached tightly.
 
-For inserting the stalks into the bulb ends, it is a *very* tight fit, recommend using tough tweezers to push it in little by little. Once in (with the LED too), pull it out slightly to make sure it is a tight fit at the end. Then insert the light-pieces into the bulb top. You can do this beforehand too and glue from the inside, or try to glue as you insert. If you used clear ABS on ABS bulbs, you can use acetone to bond them, just a light touch of it.
+- For inserting the stalks into the bulb ends, it is a *very* tight fit, recommend using tough tweezers to push it in little by little. Once in (with the LED too), pull it out slightly to make sure it is a tight fit at the end. Then insert the light-pieces into the bulb top. You can do this beforehand too and glue from the inside, or try to glue as you insert. If you used clear ABS on ABS bulbs, you can use acetone to bond them, just a light touch of it.
+  - Alternatively if you cannot bend them to fit, you *can* glue the bulbs to the top of the antennae
 
-For the shells, if you want them smooth and glossy, sand them then treat them with acetone if printed in ABS.
+- For the shells, if you want them smooth and glossy, sand them then treat them with acetone if printed in ABS.
 
-Super glue the pogo connectors into the slots on the shell you choose - use plugs in the open ones and bond with superglue or acetone if ABS.
+- For the stalks into the antennae shells, they are not interchangable, and it will be clear which one does in which. Insert the stalk through the *inside* of each shell into the odd shaped hole. If it's the right shell, it will snugly fit. 
 
-To connect the two antennae you will need to make a POGO wire with the reverse ends that will go around the back or top depending on choice. I recommend choosing the back so it provides additional stability with the headband.
+- Super glue the pogo connectors into the slots on the shell you choose - use plugs in the open ones and bond with superglue or acetone if ABS.
 
-The headband is adjustable and relies on the larger screw at the top of the back panels.
+- To connect the two antennae you will need to make a POGO wire with the reverse ends that will go around the back or top depending on choice. I recommend choosing the back so it provides additional stability with the headband.
+
+- The headband is adjustable and relies on the larger screw at the top of the back panels.
 
 See [/images](https://github.com/WolfwithSword/Minibot_Antennae/tree/main/images) for more details.
 
