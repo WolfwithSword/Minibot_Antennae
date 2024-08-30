@@ -46,7 +46,7 @@ Simply save each of the files in `/src/*` to the root of the board (do not inclu
 
 Modify `config.json` as required. These will be the default settings on every boot.
 
-Note: This file may be written to, but it will only ever chande "mode"
+Note: This file may be written to, but it will only ever change "mode"
 
 ## Materials
 
