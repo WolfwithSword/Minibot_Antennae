@@ -107,11 +107,21 @@ Mode values:
 
 ## WiFi
 
+### Setup
+
 If you can't find the IP address, it will have the hostname configured as "name" in the "wifi" section of the configuration. By default, this will mean it has a hostname of `minibot_AT`, may work as `minibot_AT.local`.
 
 When in AP mode to setup a network connection, hostname should work but if not, the setup page usually will be available at `192.168.4.1` when connected to it.
 
 If setting up multiple, please change the hostname and maybe the password for security.
+
+### Alternative Setup
+
+If you don't have a second device to setup wifi with, you can manually setup WiFi connection via a file
+
+In the root of the board, create a `wifi.dat` file and on the first line put in `SSID_NAME;SSID_PASSWORD` then add a blank empty newline after it
+
+It must be a 2.4ghz SSID. Also for setting up multiple, you can do a new one on each line.
 
 ### Endpoints
   - GET
