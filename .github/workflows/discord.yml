@@ -1,0 +1,37 @@
+name: Discord Release
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+jobs:
+  webhook-request:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+      with:
+        fetch-depth: 0
+    - name: Send a request to webhook
+      run: |
+        LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+        RESPONSE=$(curl -H "Content-Type: application/json" -X POST -d '{
+        "username": "GitHub",
+        "content": "${{github.repository}} - New Release!",
+        "embeds": [
+          {
+            "type": "rich",
+            "title": "${{github.repository}} - ${{github.ref_name}}",
+            "description": "New Release! Click to view changelog",
+            "color": 2123412,
+            "author": {
+              "name": "${{ github.actor }}",
+              "url": "https://github.com/${{ github.actor_id }}",
+              "icon_url": "https://avatars.githubusercontent.com/u/${{ github.actor_id }}?v=4"
+            },
+            "url": "https://github.com/${{ github.repository }}/releases/latest"
+          }
+        ]
+        }' ${{ secrets.WEBHOOK_URL_CONTENT }})
+        echo "Webhook server response: $RESPONSE"
